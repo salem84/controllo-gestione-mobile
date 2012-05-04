@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" media="screen and (min-width: 300px)"/>
+    <link href="@Url.Content("~/Content/Mobile.css")" rel="stylesheet" type="text/css" media="handheld, only screen and (max-width: 480px)" />
+    <script src="@Url.Content("~/Scripts/generic/jquery-1.6.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/generic/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/postify.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/vw_common.js")" type="text/javascript"></script>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="title">
+                <h1>Controllo Gestione Mobile</h1>
+            </div>
+            
+            @*<nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Configura", "Configura", "Home")</li>
+                </ul>
+            </nav>*@
+        </header>
+        <section id="main">
+            @RenderBody()
+        </section>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿@using ControlloGestione.Helpers;
+@model ControlloGestione.ViewModel.CtrlGestioneInfoVM
+           
+@{
+    ViewBag.Title = "Informazioni";
+}
+
+<script src="@Url.Content("~/Scripts/vw_info.js")" type="text/javascript"></script>
+
+
+<h2>@ViewBag.Title</h2>
+
+<div id="informazioni">
+    <span id="message" ></span>
+
+    <br />
+
+    <fieldset>
+      <legend>Timbrature</legend>
+      <ol>
+        <li>
+            <label>Mattina</label>
+            <div id="primoOrario" class="">
+                @Html.DisplayFor(m => m.Mattina1)
+            </div>
+            <div id="secondoOrario" class="">
+                @Html.DisplayFor(m => m.Mattina2)
+            </div>
+        </li>
+        <li>
+            <label>Pomeriggio</label>
+            <div id="terzoOrario" class="">
+                @Html.DisplayFor(m => m.Pomeriggio1)
+            </div>
+            <div id="quartoOrario" class="">
+                @Html.DisplayFor(m => m.Pomeriggio2)
+            </div>
+        </li>
+      </ol>
+    </fieldset>
+
+    <fieldset>
+      <legend>Riepilogo giornata</legend>
+      <ul>
+        <li>
+            <label>Ore giornaliere</label>
+            <div id="settimanaliTotali" class="">
+                @Html.DisplayFor(m => m.OreGiornaliere)
+            </div>
+        </li>
+        
+      </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend>Riepilogo settimana</legend>
+      <ul>
+        <li>
+            <label>Ore lavorate</label>
+            <div id="settimanaliDaFare" class="">
+                @Html.DisplayFor(m => m.OreLavorate)
+            </div>
+        </li>        
+        <li>
+            <label>Ore da fare</label>
+            <div id="settimanaliDaFare" class="">
+                @Html.DisplayFor(m => m.OreDaFare)
+            </div>
+        </li>
+        <li>
+            <label>Ore straordinario</label>
+            <div id="settimanaliDaFare" class="">
+                @Html.DisplayFor(m => m.OreStraordinario)
+            </div>
+        </li>
+      </ul>
+    </fieldset>
+
+    @Html.ImageActionLink(Url.Content("~/Content/Images/save.png"), "Home", "Info")
+
+</div>

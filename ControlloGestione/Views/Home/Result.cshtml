@@ -1,0 +1,21 @@
+﻿@using ControlloGestione.Helpers;
+
+@model ControlloGestione.ViewModel.ResultVM
+
+<section>
+    <h2>@Model.Title</h2>
+
+    <div class="@Model.Type">
+        @Model.Message
+    </div>
+
+    <br />
+    <div>
+        @Model.Information
+    </div>
+
+    <div class="toolbar">
+        @Html.ImageActionLink(Url.Content("~/Content/Images/back.png"), "Home", "Index")
+    </div>
+</section>
+

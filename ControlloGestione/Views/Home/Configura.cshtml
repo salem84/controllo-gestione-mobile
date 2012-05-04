@@ -1,0 +1,32 @@
+﻿@using ControlloGestione.Helpers;
+@{
+    ViewBag.Title = "Configurazione";
+}
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/Scripts/vw_configura.js")" type="text/javascript"></script>
+
+
+<section id="config_form">
+    <span id="message" ></span>
+    
+    <div id="fields">
+        <div>
+            <label>Username</label>
+            <input type="text" id="username" name="username" />
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" id="password" name="password" />
+        </div>
+    </div>
+
+    @*<a class="button" id="btnSave" href="javascript:void(0)">
+        <span>Salva</span>
+    </a>*@
+    <div class="toolbar">
+        @Html.ImageActionLink(Url.Content("~/Content/Images/back.png"), "Home", "Index")
+        <img src="/Content/images/save.png" alt="save" id="btnSave"/>
+    </div>
+</section>
+    

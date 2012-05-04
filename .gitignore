@@ -4,3 +4,7 @@ obj
 
 # mstest test results
 TestResults
+
+# file config
+ExternalSettings.config
+*.suo

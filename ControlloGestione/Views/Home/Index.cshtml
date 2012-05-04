@@ -1,0 +1,20 @@
+﻿@using ControlloGestione.Helpers;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script src="@Url.Content("~/Scripts/vw_home.js")" type="text/javascript"></script>
+
+@*@using (Html.BeginForm()) {
+    
+    
+}*@
+<div id="logindisplay"></div>
+
+<div class="listview">
+    @Html.ImageActionLink(Url.Content("~/Content/Images/edit.png"), "Firma", "Firma")
+    @Html.ImageActionLink(Url.Content("~/Content/Images/settings.png"), "Configura", "Configura")
+    @Html.ImageActionLink(Url.Content("~/Content/Images/i.png"), "Informazioni", "Info")
+</div>
+
+<div style="clear: both"></div>

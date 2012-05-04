@@ -1,0 +1,8 @@
+﻿@model TimeSpan
+           
+@{
+    string value = string.Format("{0:00}:{1:00}", (int) Model.TotalHours, Model.Minutes);
+}
+
+@value
+
