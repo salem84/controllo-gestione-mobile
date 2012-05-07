@@ -18,5 +18,11 @@ namespace ControlloGestione.Utility
             return TimeSpan.FromMilliseconds(ms);
         }
 
+
+        public static DateTime ToWestEuropeTime(this DateTime dt)
+        {
+            var currentUserTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+            return TimeZoneInfo.ConvertTime(dt, currentUserTimeZoneInfo);
+        }
     }
 }

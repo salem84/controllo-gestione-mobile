@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using ControlloGestione.Utility;
 
 namespace ControlloGestione.ViewModel
 {
@@ -44,7 +45,8 @@ namespace ControlloGestione.ViewModel
                 }
                 else
                 {
-                    var diff = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, 0) - new TimeSpan(Mattina1.Value.Hour, Mattina1.Value.Minute, 0);
+                    DateTime curDate = DateTime.Now.ToWestEuropeTime();
+                    var diff = new TimeSpan(curDate.Hour, curDate.Minute, 0) - new TimeSpan(Mattina1.Value.Hour, Mattina1.Value.Minute, 0);
                     return diff;
                 }
             }
