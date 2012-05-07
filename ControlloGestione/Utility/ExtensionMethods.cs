@@ -21,7 +21,6 @@ namespace ControlloGestione.Utility
 
         public static DateTime ToWestEuropeTime(this DateTime dt)
         {
-            dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
             var currentUserTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
             return TimeZoneInfo.ConvertTime(dt, currentUserTimeZoneInfo);
         }
