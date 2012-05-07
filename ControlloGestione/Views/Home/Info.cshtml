@@ -7,6 +7,18 @@
 
 <script src="@Url.Content("~/Scripts/vw_info.js")" type="text/javascript"></script>
 
+<style type="text/css">
+    label {
+        font-style: italic;
+        text-transform: uppercase;
+        text-decoration: underline;
+        width: auto;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
 
 <h2>@ViewBag.Title</h2>
 
@@ -20,20 +32,14 @@
       <ol>
         <li>
             <label>Mattina</label>
-            <div id="primoOrario" class="">
-                @Html.DisplayFor(m => m.Mattina1)
-            </div>
-            <div id="secondoOrario" class="">
-                @Html.DisplayFor(m => m.Mattina2)
+            <div>
+                @Html.DisplayFor(m => m.Mattina1) - @Html.DisplayFor(m => m.Mattina2)
             </div>
         </li>
         <li>
             <label>Pomeriggio</label>
-            <div id="terzoOrario" class="">
-                @Html.DisplayFor(m => m.Pomeriggio1)
-            </div>
-            <div id="quartoOrario" class="">
-                @Html.DisplayFor(m => m.Pomeriggio2)
+            <div>
+                @Html.DisplayFor(m => m.Pomeriggio1) - @Html.DisplayFor(m => m.Pomeriggio2)
             </div>
         </li>
       </ol>
@@ -51,6 +57,7 @@
         
       </ul>
     </fieldset>
+
 
     <fieldset>
       <legend>Riepilogo settimana</legend>

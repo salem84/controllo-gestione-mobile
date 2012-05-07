@@ -30,6 +30,7 @@ namespace ControlloGestione.Mapping
                         vm.Pomeriggio2 = orario;
                         break;
                 }
+                count++;
             }
 
             if (model.RiepilogoSettimana.OreLavorate > model.RiepilogoSettimana.OreDaContratto)

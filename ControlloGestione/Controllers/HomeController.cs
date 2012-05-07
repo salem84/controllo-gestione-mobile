@@ -63,18 +63,25 @@ namespace ControlloGestione.Controllers
 
         public ActionResult Info()
         {
-            if (CurrentUser != null)
+            try
             {
-                service.Autentica(CurrentUser.Username, CurrentUser.Password);
-                string raw_page = service.ReadCtrlGestionePage();
+                if (CurrentUser != null)
+                {
+                    service.Autentica(CurrentUser.Username, CurrentUser.Password);
+                    string raw_page = service.ReadCtrlGestionePage();
 
-                var pageModel = parser.ReadHours(raw_page);
-                var pageVM = pageModel.ConvertToCtrlGestioneInfoVM();
+                    var pageModel = parser.ReadHours(raw_page);
+                    var pageVM = pageModel.ConvertToCtrlGestioneInfoVM();
 
-                return View(pageVM);
+                    return View(pageVM);
+                }
+
+                return RedirectToError("Firma", "Errore: Utente non valido");
             }
-
-            return View();
+            catch (Exception ex)
+            {
+                return RedirectToError("Info", ex.Message + " " + ex.StackTrace);
+            }
         }
 
         public ActionResult Configura()

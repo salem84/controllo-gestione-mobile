@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -23,7 +24,7 @@ namespace ControlloGestione.Services.Impl
                 string s_ora = m.Groups[1].Value;
 
                 DateTime ora;
-                if (DateTime.TryParse(s_ora, out ora))
+                if (DateTime.TryParseExact(s_ora, new[] { "HH.mm", "h.mm" }, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out ora))
                 {
                     modelPage.Orari.Add(ora);
                 }
