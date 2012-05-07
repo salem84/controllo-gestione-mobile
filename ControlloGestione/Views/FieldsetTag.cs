@@ -23,7 +23,7 @@ namespace ControlloGestione.Helpers
             {
                 writer.WriteLine(string.Format("<fieldset style=\"color:{0}\">", color));
             }
-            writer.WriteLine(string.Format("<legend>{0}<legend>", title));
+            writer.WriteLine(string.Format("<legend>{0}</legend>", title));
         }
 
         public void Dispose()

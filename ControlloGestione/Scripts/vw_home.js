@@ -2,7 +2,7 @@
 /// <reference path="globals.js" />
 
 
-function firma() {
+function firmaOld() {
     var s_username = localStorage.getItem('username');
     var s_password = localStorage.getItem('password');
 
@@ -35,6 +35,13 @@ $(function () {
     links.each(function (index) {
         $(this).css('background-color', color[index]);
     });*/
+
+    $('#btnFirma').click(function () {
+        var url = $(this).attr('href');
+        $(this).attr('href', 'javascript:void(0)');
+        $(this).css('background-color', '#A0A0A0');
+        location.href = url;
+    });
 
     var s_username = localStorage.getItem('username');
     var s_password = localStorage.getItem('password');

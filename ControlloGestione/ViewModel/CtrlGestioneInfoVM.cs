@@ -43,7 +43,10 @@ namespace ControlloGestione.ViewModel
                     return oreMattina;
                 }
                 else
-                    return new TimeSpan(Mattina1.Value.Hour, Mattina1.Value.Minute, 0);
+                {
+                    var diff = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, 0) - new TimeSpan(Mattina1.Value.Hour, Mattina1.Value.Minute, 0);
+                    return diff;
+                }
             }
         }
 
