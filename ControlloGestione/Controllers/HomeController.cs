@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ControlloGestione.Services;
 using ControlloGestione.ViewModel;
 using ControlloGestione.Mapping;
+using System.Web.Caching;
 
 namespace ControlloGestione.Controllers
 {
@@ -43,14 +44,22 @@ namespace ControlloGestione.Controllers
             {
                 if (CurrentUser != null)
                 {
-                    service.Autentica(CurrentUser.Username, CurrentUser.Password);
-                    string raw_page = service.Firma();
+                    if (!IsFirmaLocked())
+                    {
+                        service.Autentica(CurrentUser.Username, CurrentUser.Password);
+                        string raw_page = service.Firma();
 
-                    var pageModel = parser.ReadHours(raw_page);
+                        LockFirma(2);
 
-                    var vm = pageModel.ConvertToCtrlGestioneInfoVM();
+                        var pageModel = parser.ReadHours(raw_page);
+                        var vm = pageModel.ConvertToCtrlGestioneInfoVM();
 
-                    return RedirectToSuccess("Firma", "FIRMATO", "Firma effettuata correttamente alle "+ vm.UltimaFirma);
+                        return RedirectToSuccess("Firma", "FIRMATO", "Firma effettuata correttamente alle " + vm.UltimaFirma);
+                    }
+                    else
+                    {
+                        return RedirectToError("Firma", "Attenzione! Hai firmato poco fa");
+                    }
                 }
 
                 return RedirectToError("Firma", "Errore: Utente non valido");
@@ -59,6 +68,21 @@ namespace ControlloGestione.Controllers
             {
                 return RedirectToError("Firma", ex.Message + " " + ex.StackTrace);
             }
+        }
+
+        private void LockFirma(int minuti)
+        {
+            ControllerContext.HttpContext.Cache.Add(CurrentUser.Username, "Firmato", null, Cache.NoAbsoluteExpiration, 
+                new TimeSpan(0, minuti, 0), CacheItemPriority.High, null);
+        }
+
+        private bool IsFirmaLocked()
+        {
+            // Ho inserito il valore in cache
+            if (ControllerContext.HttpContext.Cache[CurrentUser.Username] != null)
+                return true;
+            else
+                return false;
         }
 
         public ActionResult Info()
