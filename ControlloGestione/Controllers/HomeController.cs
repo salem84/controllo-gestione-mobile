@@ -54,7 +54,7 @@ namespace ControlloGestione.Controllers
                         var pageModel = parser.ReadHours(raw_page);
                         var vm = pageModel.ConvertToCtrlGestioneInfoVM();
 
-                        return RedirectToSuccess("Firma", "FIRMATO", "Firma effettuata correttamente alle " + vm.UltimaFirma);
+                        return RedirectToSuccess("Firma", "FIRMATO", "Firma effettuata correttamente alle " + vm.UltimaFirma.Value.ToString("HH:mm"));
                     }
                     else
                     {
